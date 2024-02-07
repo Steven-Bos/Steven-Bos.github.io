@@ -38,21 +38,22 @@
 <script>
   document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission
+    var myHeaders = new Headers();
 
     // Get username and password from the form
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
+    var raw = "{\n\"userName\": " + username + ",\n\"password\": " + password + "\n}";
+    console.log(raw);
+
     // Make an API call to "imaster.wentzo.com"
     fetch("https://imaster.wentzo.com:18002/controller/v2/tokens", {
-      method: "POST",
-      headers: {
+    method: "POST",
+    headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        username: username,
-        password: password
-      })
+      body: raw
     })
     .then(response => {
       if (response.status === 200) {
