@@ -44,7 +44,7 @@
     var password = document.getElementById("password").value;
 
     // Make an API call to "imaster.wentzo.com"
-    fetch("https://imaster.wentzo.com:18002", {
+    fetch("https://imaster.wentzo.com:18002/controller/v2/tokens", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
